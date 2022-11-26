@@ -27,11 +27,15 @@ is_male = {
 }
 names = ['Оля', 'Петя', 'Вася', 'Маша'] # зачем тут это, не понял
 
-for name, gender in is_male.items():
-    if gender is True:
-        print(f'{name}: мужской')
-    else:
-        print(f'{name}: женский')
+# Сделал функцию, чтобы использовать в след задаче
+
+def genders(names):
+    if is_male[names] is True:
+            return 'мужской'
+    return 'женский'
+for name in names:
+    gender = genders(name)
+    print(f'{name}: {gender}')
 
 
 # Задание 4
