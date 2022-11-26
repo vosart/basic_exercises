@@ -90,7 +90,7 @@ for classes in school_students:
 # Пример вывода:
 # Класс 2a: девочки 2, мальчики 0 
 # Класс 2б: девочки 0, мальчики 2
-from for_challenges import genders
+from for_challenges import genders # импорт из предыдущего задания
     
 school = [
     {'class': '2a', 'students': [{'first_name': 'Маша'}, {'first_name': 'Оля'}]},
