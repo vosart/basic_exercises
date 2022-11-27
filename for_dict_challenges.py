@@ -142,6 +142,22 @@ is_male = {
     'Олег': True,
     'Миша': True,
 }
-print(nums_girls_boys(school, is_male))
+max_boys, max_girls = 0, 0
+max_b_g = {'max_b': '', 'max_girls': 0}
+
+children = nums_girls_boys(school, is_male)
+for classes in children:
+    boys = classes['boys']
+    girls = classes['girls']
+    if  boys > max_boys:
+        max_boys = boys
+        max_b_g['max_b'] = classes['class']
+    if girls > max_girls:
+        max_girls = girls
+        max_b_g['max_g'] = classes['class']
+    
+print(f'Больше всего мальчиков в классе {max_b_g["max_b"]}')
+print(f'Больше всего девочек в классе {max_b_g["max_g"]}')
+
 
 
