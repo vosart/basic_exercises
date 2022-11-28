@@ -29,12 +29,10 @@ names = ['Оля', 'Петя', 'Вася', 'Маша'] # зачем тут эт�
 
 # Сделал функцию, чтобы использовать в след задаче
 
-def genders(names):
-    if is_male[names] is True:
-            return 'мужской'
-    return 'женский'
+def get_gender(name):
+    return 'мужской' if is_male[name] else 'женский'
 for name in names:
-    gender = genders(name)
+    gender = get_gender(name)
     print(f'{name}: {gender}')
 
 
@@ -51,11 +49,9 @@ groups = [
     ['Оля', 'Петя', 'Гриша'],
 ]
 print('Всего {num_groups} группы.'.format(num_groups = len(groups)))
-group_number = 1
-for group in groups:
-    group_length = len(group)
-    print(f'Группа {group_number}: {group_length} ученика.')
-    group_number += 1
+for idx, group in enumerate(groups, start=1):
+    print('Группа {num}: {amount} ученика'.format(num = idx, amount = len(group)))
+
 
 
 # Задание 5
@@ -69,8 +65,7 @@ groups = [
     ['Оля', 'Петя', 'Гриша'],
     ['Вася', 'Маша', 'Саша', 'Женя'],
 ]
-group = 1
-for students in groups:
-    print(f'Группа {group}: ', end='')
-    print(*students, sep=', ')   
-    group += 1
+
+for idx, group in enumerate(groups, start=1):
+    print('Группа {num}: '.format(num = idx), end='')
+    print(*group, sep=', ')  
