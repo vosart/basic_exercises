@@ -18,7 +18,7 @@ for person in students:
     names_list.append(person["first_name"])
 names_count = Counter(names_list)
 for name, count in names_count.items():
-    print(f'{name}: {count}')
+    print('{name}: {count}'.format(name = name, count = count))
 
 # или вариант без Counter
 #
@@ -53,7 +53,7 @@ def most_freq(students: list):
     most_freq_name = Counter(names_list).most_common(1)
     return most_freq_name[0][0]
 name = most_freq(students)
-print(f'Самое частое имя среди учеников: {name}')
+print('Самое частое имя среди учеников: {name}'.format(name = name))
 
 # Задание 3
 # Есть список учеников в нескольких классах, нужно вывести самое частое имя в каждом классе.
@@ -78,11 +78,9 @@ school_students = [
     ],
 ]
 list_of_freq_names = []
-num_class = 1
-for classes in school_students:
+for idx, classes in enumerate(school_students, start=1):
     name = most_freq(classes)
-    print(f'Самое частое имя в классе {num_class}: {name}')
-    num_class += 1
+    print('Самое частое имя в классе {num_class}: {name}'.format(num_class = idx, name = name))
 
 
 # Задание 4
@@ -90,7 +88,6 @@ for classes in school_students:
 # Пример вывода:
 # Класс 2a: девочки 2, мальчики 0 
 # Класс 2б: девочки 0, мальчики 2
-from for_challenges import genders # импорт из предыдущего задания
     
 school = [
     {'class': '2a', 'students': [{'first_name': 'Маша'}, {'first_name': 'Оля'}]},
@@ -104,13 +101,16 @@ is_male = {
     'Миша': True,
     'Даша': False,
 }
+def get_gender(name, list_genders):
+    return 'мужской' if list_genders[name] else 'женский'
+
 
 def nums_girls_boys(school: list, list_genders):
     list_classes = []
     for classes in school:
         boys_and_girls = {'class': classes['class'], 'boys': 0, 'girls': 0}
         for student in classes['students']:
-            gender = genders(student['first_name'], list_genders)
+            gender = get_gender(student['first_name'], list_genders)
             if gender == 'мужской':
                 boys_and_girls['boys'] += 1
             else:
@@ -122,7 +122,7 @@ for class_name in nums_girls_boys(school, is_male):
     cl = class_name['class']
     boys = class_name['boys']
     girls = class_name['girls']
-    print(f'Класс {cl}: девочки {girls}, мальчики {boys}')
+    print('Класс {cl}: девочки {gl}, мальчики {bs}'.format(cl = cl, gl = girls, bs = boys))
 
 
 
