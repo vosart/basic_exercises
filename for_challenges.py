@@ -36,6 +36,14 @@ for name in names:
     print(f'{name}: {gender}')
 
 
+def genders(names, list_genders):
+    if list_genders[names] is True:
+            return 'мужской'
+    return 'женский'
+for name in names:
+    gender = genders(name, is_male)
+    print(f'{name}: {gender}')
+
 # Задание 4
 # Даны группы учеников. Нужно вывести количество групп и для каждой группы – количество учеников в ней
 # Пример вывода:
