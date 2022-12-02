@@ -35,13 +35,9 @@ students = [
 ]
 
 def most_freq(students: list):
-    names = []
-    for person in students:
-        names.append(person["first_name"])
-    most_freq_name = Counter(names).most_common(1)
-    return most_freq_name[0][0]
-name = most_freq(students)
-print('Самое частое имя среди учеников: {name}'.format(name = name))
+    cnt_common = Counter([student['first_name'] for student in students])
+    return cnt_common.most_common(1)[0][0]
+print('Самое частое имя среди учеников: {name}'.format(name = most_freq(students)))
 
 # Задание 3
 # Есть список учеников в нескольких классах, нужно вывести самое частое имя в каждом классе.
