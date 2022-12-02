@@ -13,24 +13,12 @@ students = [
     {'first_name': 'Маша'},
     {'first_name': 'Петя'},
 ]
-names_list = []
+names = []
 for person in students:
-    names_list.append(person["first_name"])
-names_count = Counter(names_list)
+    names.append(person["first_name"])
+names_count = Counter(names)
 for name, count in names_count.items():
     print('{name}: {count}'.format(name = name, count = count))
-
-# или вариант без Counter
-#
-# names_list = {}
-# for student in students:
-#     name = student['first_name']
-#     if  name in names_list:
-#         names_list[name] += 1
-#     else:
-#         names_list[name] = 1
-# for name, count in names_list.items():
-#     print(f'{name}: {count}')
 
 
 
@@ -47,10 +35,10 @@ students = [
 ]
 
 def most_freq(students: list):
-    names_list = []
+    names = []
     for person in students:
-        names_list.append(person["first_name"])
-    most_freq_name = Counter(names_list).most_common(1)
+        names.append(person["first_name"])
+    most_freq_name = Counter(names).most_common(1)
     return most_freq_name[0][0]
 name = most_freq(students)
 print('Самое частое имя среди учеников: {name}'.format(name = name))
@@ -77,7 +65,6 @@ school_students = [
         {'first_name': 'Саша'},
     ],
 ]
-list_of_freq_names = []
 for idx, classes in enumerate(school_students, start=1):
     name = most_freq(classes)
     print('Самое частое имя в классе {num_class}: {name}'.format(num_class = idx, name = name))
@@ -101,22 +88,22 @@ is_male = {
     'Миша': True,
     'Даша': False,
 }
-def get_gender(name, list_genders):
-    return 'мужской' if list_genders[name] else 'женский'
+def get_gender(name, genders):
+    return 'мужской' if genders[name] else 'женский'
 
 
-def nums_girls_boys(school: list, list_genders):
-    list_classes = []
+def nums_girls_boys(school: list, genders):
+    count_genders = []
     for classes in school:
         boys_and_girls = {'class': classes['class'], 'boys': 0, 'girls': 0}
         for student in classes['students']:
-            gender = get_gender(student['first_name'], list_genders)
+            gender = get_gender(student['first_name'], genders)
             if gender == 'мужской':
                 boys_and_girls['boys'] += 1
             else:
                 boys_and_girls['girls'] += 1
-        list_classes.append(boys_and_girls) 
-    return list_classes
+        count_genders.append(boys_and_girls) 
+    return count_genders
 
 for class_name in nums_girls_boys(school, is_male):
     cl = class_name['class']
